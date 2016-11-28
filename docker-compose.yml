@@ -1,0 +1,38 @@
+version: '2'
+services:
+    cocorico-db-mongo:
+        restart: always
+        image: 'mongo:3.0'
+        container_name: cocorico-db-mongo
+        volumes:
+            - ./docker-data/cocorico-db-mongo/data/db:/data/db
+        ports:
+            - '27017'
+        # environment:
+        network_mode: bridge
+    cocorico-db-mysql:
+        restart: always
+        image: 'mysql:5.7'
+        container_name: cocorico-db-mysql
+        volumes:
+            - ./docker-data/cocorico-db-mysql/data/db:/var/lib/mysql
+            - ./mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+        ports:
+            - '3306'
+        environment:
+            - MYSQL_DATABASE=cocorico
+            - MYSQL_ROOT_PASSWORD=cocorico
+        network_mode: bridge
+    cocorico-web:
+        restart: always
+        build: ./
+        container_name: cocorico-web
+        links:
+            - cocorico-db-mongo
+            - cocorico-db-mysql
+        ports:
+            - '80'
+        volumes:
+            - './cocorico:/var/www/html'
+            - './apache2.conf:/etc/apache2/apache2.conf'
+        network_mode: bridge

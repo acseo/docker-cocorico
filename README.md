@@ -24,7 +24,7 @@ You should now install composer dependencies :
 $ docker exec -i -t cocorico-web composer install
 ```
 
-Follow instructions given in [https://github.com/Cocolabs-SAS/cocorico#application-install--configuration]()
+Follow instructions given in https://github.com/Cocolabs-SAS/cocorico#application-install--configuration
 
 You should put in your ```app/config/parameters.yml```the following settings for your databases :
 
@@ -40,7 +40,7 @@ parameters:
     mongodb_database_name: cocorico_dev
 ```
 
-Then you should setup Cocorico as described in [https://github.com/Cocolabs-SAS/cocorico#installation]()
+Then you should setup Cocorico as described in https://github.com/Cocolabs-SAS/cocorico#installation
 
 ```bash
 $ docker exec -i -t cocorico-web  chmod 744 bin/init-db

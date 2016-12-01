@@ -107,6 +107,8 @@ RUN \
 # Launch appache
 ################################################################################
 
+WORKDIR /var/www/html
+
 COPY apache2-foreground /usr/local/bin/
 EXPOSE 80
 CMD ["apache2-foreground"]

@@ -52,3 +52,7 @@ $ docker exec -i -t cocorico-web  php app/console assetic:dump --env=dev
 ```
 
 **Your setup is now complete!** If you want to customize things, feel free to have a look at the Dockerfile and docker-compose.yml file
+
+## Optional config
+
+There is an optional ``docker-copose.yml`` available in the branch ``docker-rsync`` in this repository.

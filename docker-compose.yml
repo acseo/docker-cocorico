@@ -32,7 +32,20 @@ services:
             - cocorico-db-mysql
         ports:
             - '80'
+        volumes_from:
+            - sync
+        working_dir: /var/www/html
         volumes:
-            - './cocorico:/var/www/html'
+            #- /var/www/html/web
+            #- './cocorico:/var/www/html'
             - './apache2.conf:/etc/apache2/apache2.conf'
         network_mode: bridge
+    sync:
+        build: docker/sync
+        command: "lsyncd -delay 1 -nodaemon -rsync /src /var/www/html"
+        volumes:
+            - /var/www/html
+            - "./cocorico:/src"
+        working_dir: /src
+        stdin_open: true
+        tty: true

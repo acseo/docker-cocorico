@@ -12,7 +12,7 @@ $ cd /path/to/cocorico
 $ git clone https://github.com/Cocolabs-SAS/cocorico.git
 ```
 
-Then start containers (databses and web) with docker-compose :
+Then start containers (databases and web) with docker-compose :
 
 ```bash
 $ docker-compose up
